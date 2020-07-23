@@ -38,7 +38,7 @@ def ds_gen():
         done = tf.pad(done, [[0, n_pad]], constant_values=done[-1])
         yield img, action, reward, done
 def create_tf_dataset():
-    dataset = tf.data.Dataset.from_generator(ds_gen, output_types=(tf.float32, tf.float32, tf.float32, tf.bool), output_shapes=((args.max_frames, 64, 64, 4), (args.max_frames, args.a_width), (args.max_frames,), (args.max_frames,)))
+    dataset = tf.data.Dataset.from_generator(ds_gen, output_types=(tf.float32, tf.float32, tf.float32, tf.bool), output_shapes=((args.max_frames, 64, 64, 4), (args.max_frames, 1), (args.max_frames,), (args.max_frames,)))
     return dataset
 
 @tf.function
